@@ -25,6 +25,11 @@ square.forEach(id => {
         if (id.id === hitPosition) {
             result = result + 1
             score.textContent = result
+            clearInterval(timerMove)
+            if (currentTime !== 0) {
+                randomSquare()
+                timerMove = setInterval(randomSquare, 1000)
+            }
         } else {
             result = result - 0.3
             score.textContent = result
@@ -32,16 +37,7 @@ square.forEach(id => {
     })
 })
 
-
-function moveMole() {
-    randomSquare()
-    console.log(currentTime)
-    if (currentTime === 0) {
-        clearInterval(timerMove)
-    }
-}
-
-let timerMove = setInterval(moveMole, 1000)
+let timerMove = setInterval(randomSquare, 1000)
 
 function countDown() {
     currentTime--
